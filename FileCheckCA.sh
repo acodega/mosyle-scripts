@@ -8,29 +8,23 @@
 # This example was used to check for leftover FileWave remnants
 #
 
-path1=/var/FileWave/
-path2=/usr/local/sbin/FileWave.app
-path3=/sbin/fwcontrol
-path4=/Applications/FileWave\ Kiosk.app
-path5=/System/Library/StartupItems/FWClient/
+paths=(
+  "/var/FileWave/"
+  "/usr/local/sbin/FileWave.app"
+  "/sbin/fwcontrol"
+  "/Applications/FileWave Kiosk.app"
+  "/System/Library/StartupItems/FWClient/"
+)
 
+ret=0
 
-if [ -e "$path1" ]; then echo "Yes: '$path1'"
-else echo "Not found: '$path1'"
-fi
+for path in "${paths[@]}"; do
+  if [ ! -e "${path}" ]; then
+    echo "Not found: '${path}'"
+    ret=1
+  else
+    echo "Yes: '${path}'" 
+  fi
+done
 
-if [ -e "$path2" ]; then echo "Yes: '$path2'"
-else echo "Not found: '$path2'"
-fi
-
-if [ -e "$path3" ]; then echo "Yes: '$path3'"
-else echo "Not found: '$path3'"
-fi
-
-if [ -e "$path4" ]; then echo "Yes: '$path4'"
-else echo "Not found: '$path4'"
-fi
-
-if [ -e "$path5" ]; then echo "Yes: '$path5'"
-else echo "Not found: '$path5'"
-fi
+exit ${ret}
