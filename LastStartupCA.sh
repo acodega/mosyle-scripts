@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# File Name: LastStartup.sh https://github.com/acodega/mosyle
+# File Name: LastStartupCA.sh https://github.com/acodega/mosyle
 # Custom command attribute to check and report the time of the Mac's last startup (aka last restart)
 # Custom command attributes are intended for use with Mosyle MDM
 # I wish Mosyle supported date formatting so we could report against it
