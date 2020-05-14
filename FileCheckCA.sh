@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# File Name: FileCheck.sh https://github.com/acodega/mosyle
+# File Name: FileCheckCA.sh https://github.com/acodega/mosyle
 # Custom command attribute to check and report if a file or files exists
 # Custom command attributes are intended for use with Mosyle MDM
 # Remember, we want to produce output if the file is found or not found
