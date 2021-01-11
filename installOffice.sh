@@ -1,27 +1,28 @@
-#!/bin/zsh
+#!/bin/bash
 
 # set these values as needed for this script
 
-# First, enter the Microsoft fwlink product ID, e.g. "525133" for Office 2019, found at the end of Microsoft's FW links
+# Microsoft fwlink product ID, e.g. "525133" for Office 2019, found at the end of Microsoft's FW link
 linkID="525133"
 url="https://go.microsoft.com/fwlink/?linkid=$linkID"
 
-# Second, Expected Team ID of the downloaded PKG. to provide value,
-# Manually download the package and run '/usr/sbin/spctl -a -vv -t install package.pkg' to get the expected Team ID
+# Expected Team ID of the downloaded PKG. To find out the value,
+# Manually download the package and run
+# '/usr/sbin/spctl -a -vv -t install package.pkg' to get the expected Team ID
 expectedTeamID="UBF8T346G9"
 
 # no further customization is needed
 
 # check for Office installation and exit if found
-if [ -e "/Applications/Microsoft Word.app" ]; then;
+if [ -e "/Applications/Microsoft Word.app" ]; then
   echo "Microsoft Word found. Exiting."
-	exitcode=0
-	exit $exitCode
+    exitCode=0
+    exit $exitCode
 else echo "Microsoft Word not found. Proceeding..."
 fi
 
 # create temporary working directory
-workDirectory=$( /usr/bin/basename $0 )
+workDirectory=$( /usr/bin/basename "$0" )
 tempDirectory=$( /usr/bin/mktemp -d "/private/tmp/$workDirectory.XXXXXX" )
 echo "Created working directory '$tempDirectory'"
 
@@ -39,8 +40,8 @@ if [ "$expectedTeamID" = "$teamID" ] || [ "$expectedTeamID" = "" ]; then
   /usr/sbin/installer -pkg "$tempDirectory/$linkID.pkg" -target /
   exitCode=0
 else
-	echo "Package verification failed before package installation could start. Download link may be invalid."
-	exitCode=1
+    echo "Package verification failed before package installation could start. Download link may be invalid."
+    exitCode=1
 fi
 
 # remove the temporary working directory when done
