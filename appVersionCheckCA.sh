@@ -1,13 +1,16 @@
 #!/bin/bash
 #
-# A script to collect the version of Google Chrome that is currently installed.
-# If Google Chrome is not installed, it returns "Not Installed".
-# This is my template for collecting versions on apps that don't play well with Mosyle reporting.
+# Custom command attribute to check and report an installed app's version. Google Chrome is the example.
+# Custom command attributes are intended for use with Mosyle MDM
+# If app is not installed, it returns "Not Installed".
 #
 
-RESULT="Not Installed"
-if [ -f "/Applications/Google Chrome.app/Contents/Info.plist" ] ; then
-RESULT=$(/usr/bin/defaults read "/Applications/Google Chrome.app/Contents/Info.plist" KSVersion)
+# Enter path here to the app you want to check
+appPath="/Applications/Google Chrome.app"
+
+result="Not Installed"
+if [ -f "$appPath/Contents/Info.plist" ]; then
+    result=$(/usr/bin/defaults read "$appPath/Contents/Info.plist" KSVersion)
 fi
 
-/bin/echo "$RESULT"
+/bin/echo "$result"
