@@ -9,7 +9,7 @@
 # Custom command attributes are intended for use with Mosyle MDM
 #
 
-batteryCondition=$(system_profiler SPPowerDataType | grep "Condition" | awk '{print $2}')
+batteryCondition=$(system_profiler SPPowerDataType | grep "Condition" | cut -d':' -f2)
 batteryCycleCount=$(system_profiler SPPowerDataType | grep "Cycle Count" | awk '{print $3}')
 
 echo $batteryCondition \($batteryCycleCount\)
