@@ -1,3 +1,5 @@
+#!/bin/bash
+
 currentUser=$(scutil <<< "show State:/Users/ConsoleUser" | awk '/Name :/ { print $3 }')
 uid=$(id -u "$currentUser")
 
