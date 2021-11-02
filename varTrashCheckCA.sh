@@ -7,4 +7,4 @@
 # Custom command attributes are intended for use with Mosyle MDM
 #
 
-echo $(du -sh /private/var/root/.Trash)
+echo $(sudo du -sh /private/var/root/.Trash | awk '{print $1}')
