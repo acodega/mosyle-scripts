@@ -20,7 +20,10 @@ else
 fi
 
 ## Get the full model name from Apple's support page, using the portion of the Serial Number
-fullModelName=$(curl -s "https://support-sp.apple.com/sp/product?cc=${Serial}" | xmllint --format - 2>/dev/null | awk -F'>|<' '/<configCode>/{print $3}')
+# fullModelName=$(curl -s "https://support-sp.apple.com/sp/product?cc=${Serial}" | xmllint --format - 2>/dev/null | awk -F'>|<' '/<configCode>/{print $3}')
+
+## Replacing call to support-sp.apple.com because randomized serial numbers are in use and the site seams to no longer work
+fullModelName=/usr/libexec/PlistBuddy -c "print 0:product-description" /dev/stdin <<< $(/usr/sbin/ioreg -abr -k "product-name")
 
 ## If we didn't get an empty response, echo the full model name
 if [ "$fullModelName" != "" ]; then
