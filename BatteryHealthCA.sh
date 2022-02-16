@@ -10,7 +10,8 @@
 # Custom command attributes are intended for use with Mosyle MDM
 #
 
-hwType=$(/usr/sbin/system_profiler SPHardwareDataType | grep "Model Identifier" | grep "Book")	
+hwType=$(/usr/sbin/system_profiler SPHardwareDataType | grep "Model Identifier" | grep "Book")
+
 if [ "$hwType" != "" ];
   then
     batteryCondition=$(system_profiler SPPowerDataType | grep "Condition" | awk -F': ' '/Condition:/{ print $NF }')
