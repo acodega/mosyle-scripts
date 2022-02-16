@@ -7,4 +7,10 @@
 # Custom command attributes are intended for use with Mosyle MDM
 #
 
-echo $(sudo du -sh /private/var/root/.Trash | awk '{print $1}')
+pathcheck=/private/var/root/.Trash
+
+if [ -e "$pathcheck" ]; then
+    echo $(sudo du -sh "$pathcheck" | awk '{print $1}')
+else 
+    echo "N/A"
+fi
