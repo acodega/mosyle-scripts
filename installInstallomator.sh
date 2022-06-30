@@ -27,7 +27,6 @@ if [ ! -e "/usr/local/Installomator/Installomator.sh" ]; then
   else 
     echo "Package verification failed before package installation could start. Download link may be invalid. Aborting."
     exitCode=1
-    exit $exitCode
   fi
   # Remove the temporary working directory when done
   echo "Deleting working directory '$tempDirectory' and its contents"
