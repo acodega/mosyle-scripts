@@ -22,7 +22,7 @@ runAsUser() {
 
 # Check for desktoppr and install if not found
 if [ ! -e "/usr/local/bin/desktoppr" ]; then
-  echo "Desktoppr not found. Installing."
+  echo "Desktoppr not found. Installing..."
   # Create temporary working directory
   workDirectory=$( /usr/bin/basename "$0" )
   tempDirectory=$( /usr/bin/mktemp -d "/private/tmp/$workDirectory.XXXXXX" )
