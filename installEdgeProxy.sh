@@ -69,5 +69,7 @@ echo "Deleting working directory '$tempDirectory' and its contents"
 
 unset http_proxy
 unset https_proxy
+unset HTTP_PROXY
+unset HTTPS_PROXY
 
 exit $exitCode
