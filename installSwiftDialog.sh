@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get the URL of the latest PKG From the Dialog GitHub repo
-url=$(curl --silent --fail "https://api.github.com/repos/bartreardon/swiftDialog/releases/latest" | awk -F '"' "/browser_download_url/ && /pkg\"/ { print \$4; exit }")
+url=$(curl --silent --fail "https://api.github.com/repos/swiftDialog/swiftDialog/releases/latest" | awk -F '"' "/browser_download_url/ && /pkg\"/ { print \$4; exit }")
 # Expected Team ID of the downloaded PKG
 expectedTeamID="PWA5E9TQ59"
 exitCode=0
