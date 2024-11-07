@@ -10,7 +10,7 @@
 # Custom command attributes are intended for use with Mosyle MDM
 #
 
-hwType=$(/usr/sbin/system_profiler SPHardwareDataType | grep "Model Identifier" | grep "Book")
+hwType=$(/usr/sbin/system_profiler SPHardwareDataType | grep "Model Name" | grep "Book")
 
 if [ "$hwType" != "" ];
   then
